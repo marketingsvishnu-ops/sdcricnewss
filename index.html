@@ -1,398 +1,455 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket News</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
-    }
+body{
+  background:#0f1020;
+  color:white;
+}
 
-    header {
-      background: #0b5d3b;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
 
-    .hero {
-      background: linear-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.55)
-      ),
-      url("https://images.unsplash.com/photo-1531415074968-036ba1b575da")
-      center/cover;
+.box{
+  width:100%;
+  background:rgba(10,10,10,.88);
+  border:1px solid #d4af37;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(212,175,55,.28);
+}
 
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      padding: 50px 7%;
-      color: white;
-    }
+.badge{
+  display:inline-block;
+  background:#d4af37;
+  color:#111;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
+}
 
-    .hero-content {
-      max-width: 650px;
-    }
+h1{
+  font-size:34px;
+  color:#ffd86b;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
 
-    .hero h1 {
-      font-size: 46px;
-      margin-bottom: 15px;
-    }
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
+}
 
-    .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
 
-    .container {
-      width: 86%;
-      max-width: 1200px;
-      margin: 40px auto;
-    }
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(212,175,55,.55);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
 
-    .section-title {
-      font-size: 30px;
-      margin-bottom: 25px;
-      color: #0b5d3b;
-    }
+.feature span{
+  color:#ffd86b;
+}
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid #1ebe5d;
+  transition:.3s;
+}
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
+.signup-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.03);
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
 
-    .card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-    }
+.website-row a{
+  text-decoration:none;
+}
 
-    .card-content {
-      padding: 20px;
-    }
+.website{
+  color:#25D366;
+}
 
-    .category {
-      color: #0b8f58;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+.whatsapp-small{
+  color:#ffd86b;
+}
 
-    .card h2 {
-      font-size: 21px;
-      margin: 10px 0;
-      line-height: 1.3;
-    }
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
 
-    .card p {
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
 
-    .read-more {
-      display: inline-block;
-      background: #0b5d3b;
-      color: white;
-      padding: 9px 15px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-    }
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:#ff1744;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,23,68,0.6);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+}
 
-    .scores {
-      background: #102a43;
-      color: white;
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 45px;
-    }
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:#ff5722;
+  box-shadow:0 12px 25px rgba(255,23,68,0.8);
+}
 
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
 
-    .match {
-      background: #173f5f;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
 
-    .match h3 {
-      margin-bottom: 10px;
-    }
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+}
 
-    .match p {
-      color: #d9e2ec;
-      line-height: 1.6;
-    }
+.bonus-popup[hidden]{
+  display:none;
+}
 
-    footer {
-      background: #082c1e;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-    }
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid #d4af37;
+  border-radius:16px;
+  background:linear-gradient(145deg,#24210f,#111218 70%);
+  text-align:center;
+  box-shadow:0 18px 60px rgba(0,0,0,.65);
+  animation:popup-enter .24s ease-out;
+}
 
-    @media (max-width: 900px) {
-      .news-grid,
-      .score-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:#ddd;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
 
-      .hero h1 {
-        font-size: 36px;
-      }
-    }
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:#ffd86b;
+  font-size:30px;
+}
 
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#eee;
+  line-height:1.5;
+}
 
-      nav a {
-        margin: 0 8px;
-      }
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:8px;
+  background:#25D366;
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
 
-      .news-grid,
-      .score-grid {
-        grid-template-columns: 1fr;
-      }
+.bonus-claim:hover{
+  background:#1ebe5d;
+}
 
-      .hero {
-        min-height: 350px;
-      }
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
 
-      .hero h1 {
-        font-size: 30px;
-      }
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
 
-      .container {
-        width: 92%;
-      }
-    }
-  </style>
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
+
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">🏏 Cricket News</div>
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Claim 10% Bonus</h2>
+    <p>Sign up now and get started with the deposit bonus.</p>
+    <a class="bonus-claim" href="http://www.multicric.com/?code=266ice">🔥 Claim Bonus &amp; Sign Up</a>
+  </div>
+</div>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#news">News</a>
-      <a href="#scores">Scores</a>
-      <a href="#schedule">Schedule</a>
-    </nav>
-  </header>
+<div class="container">
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Latest Cricket News</h1>
-      <p>
-        Get the latest cricket news, match updates, scores,
-        tournaments and team announcements all in one place.
-      </p>
+  <div class="demo">
+    <a href="http://www.multicric.com/?code=266ice" target="_blank" rel="noopener noreferrer" class="floating-signup">🔥 CLICK ON SIGNUP 🔥</a>
+    <iframe src="http://www.multicric.com/?code=266ice"></iframe>
+  </div>
+
+  <div class="right">
+    <div class="box">
+
+  <div class="badge">AUTO WEBSITE</div>
+
+  <h1>Get Your ID Now</h1>
+
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
     </div>
-  </section>
 
-  <!-- Main Content -->
-  <main class="container">
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
+    </div>
 
-    <!-- Live / Recent Matches -->
-    <section class="scores" id="scores">
-      <h2 class="section-title" style="color:white;">
-        🏏 Match Centre
-      </h2>
+    <div class="feature">
+      Auto Website Support:
+      <a
+        class="signup-btn"
+        href="http://www.multicric.com/?code=266ice"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Click on Signup
+      </a>
+    </div>
 
-      <div class="score-grid">
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
+    </div>
 
-        <div class="match">
-          <h3>India vs Pakistan</h3>
-          <p>
-            Asian Games T20 Final<br>
-            🏆 Gold Medal Match
-          </p>
-        </div>
+  </div>
 
-        <div class="match">
-          <h3>England vs Pakistan</h3>
-          <p>
-            ODI Tri-Series<br>
-            📅 October 18–31
-          </p>
-        </div>
+  <div class="website-row">
 
-        <div class="match">
-          <h3>World Cup 2027</h3>
-          <p>
-            ODI World Cup<br>
-            🌍 South Africa, Zimbabwe & Namibia
-          </p>
-        </div>
+    <a
+      class="website"
+      href="http://www.multicric.com/?code=266ice"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 http://www.multicric.com/?code=266ice
+    </a>
 
-      </div>
-    </section>
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/+447873184836"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
 
-    <!-- News -->
-    <section id="news">
+  </div>
 
-      <h2 class="section-title">Latest Cricket News</h2>
+  <a
+    class="cta"
+    href="https://wa.me/+447873184836?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
 
-      <div class="news-grid">
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
 
-        <article class="card">
-          <img
-            src="https://images.unsplash.com/photo-1531415074968-036ba1b575da"
-            alt="Cricket match"
-          >
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
 
-          <div class="card-content">
-            <span class="category">Asian Games</span>
+</div>
 
-            <h2>
-              India Set Up Gold-Medal Clash With Pakistan
-            </h2>
+  </div>
 
-            <p>
-              India advanced to the Asian Games T20 final after
-              defeating Sri Lanka, setting up a final against Pakistan.
-            </p>
+</div>
 
-            <a href="#" class="read-more">Read More →</a>
-          </div>
-        </article>
+<script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
 
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
+}
 
-        <article class="card">
-          <img
-            src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e"
-            alt="Cricket batsman"
-          >
-
-          <div class="card-content">
-            <span class="category">England Cricket</span>
-
-            <h2>
-              England Announce Squad for Pakistan ODI Tri-Series
-            </h2>
-
-            <p>
-              Adil Rashid and Sam Curran return, while three
-              uncapped players receive their first ODI call-ups.
-            </p>
-
-            <a href="#" class="read-more">Read More →</a>
-          </div>
-        </article>
-
-
-        <article class="card">
-          <img
-            src="https://images.unsplash.com/photo-1531415074968-036ba1b575da"
-            alt="Cricket stadium"
-          >
-
-          <div class="card-content">
-            <span class="category">World Cup</span>
-
-            <h2>
-              2027 Cricket World Cup Schedule Announced
-            </h2>
-
-            <p>
-              The ICC Men's ODI World Cup schedule has been released,
-              with major international fixtures confirmed.
-            </p>
-
-            <a href="#" class="read-more">Read More →</a>
-          </div>
-        </article>
-
-
-        <article class="card">
-          <img
-            src="https://images.unsplash.com/photo-1593766827228-8737b9cd3d7b"
-            alt="Cricket player"
-          >
-
-          <div class="card-content">
-            <span class="category">International</span>
-
-            <h2>
-              Latest International Cricket Updates
-            </h2>
-
-            <p>
-              Follow team selections, player news, tournament
-              developments and international cricket updates.
-            </p>
-
-            <a href="#" class="read-more">Read More →</a>
-          </div>
-        </article>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Cricket News. All rights reserved.</p>
-    <p>🏏 Your home for cricket updates.</p>
-  </footer>
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
+</script>
 
 </body>
 </html>
-```
